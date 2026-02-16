@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio RavenXTeam</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+--red:#ff2a2a;
+--border:rgba(255,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#000;color:#eaeaea;overflow-x:hidden}
+
+.container{
+width:100%;
+max-width:1180px;
+margin:auto;
+padding:0 28px;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-1;
+background:
+linear-gradient(rgba(255,0,0,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,0,0,0.05) 1px, transparent 1px),
+linear-gradient(120deg,#000,#0b0000,#000);
+background-size:30px 30px, 30px 30px, cover;
+animation:gridMove 40s linear infinite;
+}
+
+@keyframes gridMove{
+0%{
+background-position:0 0, 0 0, 0 0;
+}
+50%{
+background-position:60px 30px, 30px 60px, 0 0;
+}
+100%{
+background-position:0 0, 0 0, 0 0;
+}
+}
+
+header{
+position:fixed;
+width:100%;
+background:#000;
+border-bottom:1px solid var(--border);
+z-index:999;
+}
+
+.header-bar{
+height:60px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{color:var(--red);font-weight:600;font-size:18px}
+.menu-btn{font-size:20px;color:#fff;cursor:pointer}
+
+.top-menu{
+position:fixed;
+top:-260px;
+left:0;
+width:100%;
+background:#050505;
+border-bottom:1px solid var(--border);
+transition:.35s ease;
+z-index:998;
+}
+.top-menu.show{top:60px;}
+
+.menu-inner{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:18px;
+padding:22px 0;
+}
+.menu-inner a{
+color:#ccc;
+text-decoration:none;
+font-size:15px;
+display:flex;
+gap:8px;
+align-items:center;
+}
+.menu-inner a:hover{color:var(--red)}
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+.hero h1{font-size:54px}
+.hero span{color:var(--red)}
+.hero p{color:#8c8c8c;margin-top:10px}
+
+section{
+padding:110px 0;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+section.show{opacity:1;transform:none}
+
+.title{font-size:26px;margin-bottom:35px}
+.title .red{color:var(--red)}
+.title .white{color:#fff}
+
+.grid{display:grid;gap:18px}
+
+.team{
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+.member{
+border:1px solid var(--border);
+padding:18px;
+text-align:center;
+}
+.role{font-size:12px;color:#9a9a9a;margin-top:4px}
+
+.projects{
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+.project{
+border:1px solid var(--border);
+padding:18px;
+}
+.project h3{
+display:flex;
+gap:8px;
+align-items:center;
+margin-bottom:6px;
+}
+.project p{font-size:13px;color:#aaa}
+
+.links{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+}
+.links a{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+border:1px solid var(--red);
+color:#fff;
+padding:12px 18px;
+text-decoration:none;
+font-size:14px;
+}
+.links a:hover{
+background:var(--red);
+color:#000;
+}
+
+footer{
+border-top:1px solid var(--border);
+text-align:center;
+padding:26px 0;
+font-size:13px;
+color:#666;
+background:#050505;
+}
+
+#loader{
+position:fixed;
+inset:0;
+background:#000;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+
+.loader-box{
+text-align:center;
+color:#ff2a2a;
+font-size:14px;
+letter-spacing:2px;
+}
+
+.spinner{
+width:50px;
+height:50px;
+border:4px solid rgba(255,255,255,0.08);
+border-top:4px solid #ff2a2a;
+border-radius:50%;
+margin:auto;
+margin-bottom:14px;
+animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+0%{ transform:rotate(0deg);}
+100%{ transform:rotate(360deg);}
+}
+
+.hero-logo{
+display:block;
+width:180px;
+margin:0 auto 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <div class="loader-box">
+    <div class="spinner"></div>
+    <p>INITIALIZING</p>
+  </div>
+</div>
+
+<div class="bg"></div>
+
+<header>
+<div class="container header-bar">
+<div class="logo">
+<span style="color:#ff2a2a;">Raven</span><span style="color:#ffffff;">XTeam</span>
+</div>
+<i class="fa-solid fa-bars-staggered menu-btn" onclick="toggleMenu()"></i>
+</div>
+</header>
+
+<div class="top-menu" id="menu">
+<div class="menu-inner">
+<a href="#about"><i class="fa-solid fa-user"></i> About</a>
+<a href="#team"><i class="fa-solid fa-people-group"></i> Team</a>
+<a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+<a href="#contact"><i class="fa-solid fa-link"></i> Contact</a>
+</div>
+</div>
+
+<div class="hero">
+  <div class="container">
+    <img src="https://n.uguu.se/KXRaqisJ.png" alt="RavenXTeam Logo" class="hero-logo">
+    
+    <h1>Portofolio <span>RavenXTeam</span></h1>
+    <p>Creators • System Builders • Innovators</p>
+  </div>
+</div>
+
+<section id="about">
+<div class="container">
+<h2 class="title"><span class="red">About</span> <span class="white">RavenXTeam</span></h2>
+<p>RavenXTeam adalah project yang berfokus pada pembangunan sistem, automation, dan platform modern dengan struktur profesional, stabil, dan efisien.</p>
+</div>
+</section>
+
+<section id="team">
+<div class="container">
+<h2 class="title"><span class="red">RavenXTeam</span> <span class="white">Creators</span></h2>
+
+<div class="grid team">
+<div class="member"><h3>Kaii Official</h3><div class="role">This Creators</div></div>
+<div class="member"><h3>Sya??</h3><div class="role">My Lovers</div></div>
+<div class="member"><h3>PermenMD</h3><div class="role">My Idol</div></div>
+<div class="member"><h3>AiiSigma</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>Zsnz</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>Zarr</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>Pdl.Pdf</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>Zyrex</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>Kyingz</h3><div class="role">Best My Friends</div></div>
+<div class="member"><h3>DX FadilTzy</h3><div class="role">My Friends</div></div>
+<div class="member"><h3>Sayroo</h3><div class="role">My Friends</div></div>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<h2 class="title"><span class="red">Core</span> <span class="white">Projects</span></h2>
+
+<div class="grid projects">
+
+<div class="project">
+<h3><i class="fa-brands fa-android"></i> Flutter Applications</h3>
+<p>Pengembangan aplikasi mobile dengan performa stabil, UI modern, responsive layout, dan arsitektur scalable untuk kebutuhan production.</p>
+</div>
+
+<div class="project">
+<h3><i class="fa-brands fa-node-js"></i> Node.js Systems</h3>
+<p>Backend system, automation service, API, dan realtime processing dengan efisiensi tinggi serta struktur modular professional.</p>
+</div>
+
+<div class="project">
+<h3><i class="fa-brands fa-js"></i> JavaScript Platforms</h3>
+<p>Pembuatan platform web interaktif, dashboard system, dan dynamic client rendering dengan performa optimal.</p>
+</div>
+
+<div class="project">
+<h3><i class="fa-solid fa-gear"></i> Automation Engine</h3>
+<p>Workflow automation, task engine, monitoring system, dan auto-processing untuk meningkatkan efisiensi sistem.</p>
+</div>
+
+<div class="project">
+<h3><i class="fa-solid fa-globe"></i> Web Development</h3>
+<p>Pembuatan website profesional, responsive design, SEO-ready, dan struktur scalable untuk jangka panjang.</p>
+</div>
+
+<div class="project">
+<h3><i class="fa-solid fa-layer-group"></i> System Architecture</h3>
+<p>Perancangan struktur sistem modular, stabil, maintainable, dan efisien untuk kebutuhan software modern.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2 class="title"><span class="red">Official</span> <span class="white">Links</span></h2>
+
+<div class="links">
+<a href="https://t.me/RavenChannels" target="_blank">
+<i class="fab fa-telegram"></i> Channels Raven
+</a>
+
+<a href="https://t.me/KaiiOfficial" target="_blank">
+<i class="fab fa-telegram"></i> Creators Raven
+</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Portofolio RavenXTeam — All Rights Reserved
+</footer>
+
+<script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
+}
+
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top < window.innerHeight-120){
+sec.classList.add("show");
+}
+});
+});
+</script>
+<script>
+const loader = document.getElementById("loader");
+
+window.addEventListener("load", ()=>{
+  setTimeout(()=>{
+    loader.classList.add("hide");
+  }, 3000);
+});
+</script>
+
+</body>
+</html>
